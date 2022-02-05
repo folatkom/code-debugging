@@ -5,18 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');/*brakowało importu wybranej czcionki*/
         :root {
             --bg-color: red;
         }
 
         body {
-            backgroundColor: var(bg-color);
-            font-family: Lato;
+            background-color: var(--bg-color); /*błąd w nazwie wlasciwosci (tak nazywamy np w jsx) + błąd w nazwie zmiennej css*/
+            font-family: Lato, sans-serif; /*warto dodać zapasową czcionkę, na wypadek gdyby zewnętrzna nie była dostępna*/
         }
 
         div {
-            margin-top: 2rem;
-            margin-bottom: 2rem;
+            margin: 2rem 0; /*można użyć shorthandu dla właściwości margin zamiast go dzielić na top i bottom*/
         }
 
         .hero {
@@ -25,12 +25,12 @@
     </style>
 </head>
 <body>
-    <h1 aria-main="true">Hall of fame</h1>
-    <div className="hero">
-        <h1>Hero count: {heroCount}</h1>
-    </div>>
-    <button onclick="Hero.train()">Power Up Hero</button>
+    <h1 role="main">Hall of fame</h1><!--błąd zapisu-->
+    <div class="hero"><!--błąd w nazwie własciwości (tak nazywamy np w jsx)-->
+        <h2>Hero count: <span id="heroCount"></span></h2><!--sposób wstawienia wartości zmiennej js był niewłaściwy (to js powinien ją wstawiać) + błąd semantyczny - powinien być jeden znacznik <h1></h1> w dokumencie-->
+    </div><!--blad zapisu-->
+    <!--button był tworzony jeden wspólny zamiast do każdego bohatera osobno-->
 
-    <script></script>
+    <script src="heroes-hall-of-fame.js"></script><!--brak podłączenia pliku js do html-->
 </body>
-</html> 
+</html>
